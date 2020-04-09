@@ -1,8 +1,10 @@
 <?php
+header('Content-Type: application/json');
 
 function covid19ImpactEstimator($datas)
 {
-  $data = json_encode($datas);
+
+    $data = json_encode($datas, JSON_FORCE_OBJECT);
   
   if($data->periodType =="days") {
         $infection_time = (int)($data->timeToElapse / 2);
@@ -68,7 +70,7 @@ function covid19ImpactEstimator($datas)
                 "dollarsInFlight" =>$SdollarsInFlight
             ]
         ];
-    $newdata = json_encode($out_data);
+    $newdata = json_encode($out_data,JSON_FORCE_OBJECT);
     $newdata->data = $data;
 
     return $newdata;
