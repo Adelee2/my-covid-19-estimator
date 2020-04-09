@@ -47,39 +47,30 @@ function covid19ImpactEstimator($data)
         $SdollarsInFlight = 0;
     }
     $out_data = '{
-        "data": {
-                "region": {
-                    "name": '.$data["name"].',
-                    "avgAge": '.$data["avgAge"].',
-                    "avgDailyIncomeInUSD": '.$data["avgDailyIncomeInUSD"].',
-                    "avgDailyIncomePopulation": '.$data["avgDailyIncomePopulation"].'
+            "data": "",
+            "impact": {
+                    "currentlyInfected": '.$impactcurrentlyInfected.',
+                    "infectionsByRequestedTime": '.$impactinfectionsByRequestedTime.',
+                    "severeCasesByRequestedTime": '.$IsevereCasesByRequestedTime.',
+                    "hospitalBedsByRequestedTime": '.$IhospitalBedsByRequestedTime.',
+                    "casesForICUByRequestedTime": '.$IcasesForICUByRequestedTime.',
+                    "casesForVentilatorsByRequestedTime": '.$IcasesForVentilatorsByRequestedTime.',
+                    "dollarsInFlight": '.$IdollarsInFlight.'
                 },
-                "periodType": '.$data["periodType"].',
-                "timeToElapse": '.$data["timeToElapse"].',
-                "reportedCases": '.$data["reportedCases"].',
-                "population": '.$data["population"].',
-                "totalHospitalBeds": '.$data["totalHospitalBeds"].'
-            },
-        "impact": {
-                "currentlyInfected": '.$impactcurrentlyInfected.',
-                "infectionsByRequestedTime": '.$impactinfectionsByRequestedTime.',
-                "severeCasesByRequestedTime": '.$IsevereCasesByRequestedTime.',
-                "hospitalBedsByRequestedTime": '.$IhospitalBedsByRequestedTime.',
-                "casesForICUByRequestedTime": '.$IcasesForICUByRequestedTime.',
-                "casesForVentilatorsByRequestedTime": '.$IcasesForVentilatorsByRequestedTime.',
-                "dollarsInFlight": '.$IdollarsInFlight.'
-            },
-        "severeImpact":{
-                "currentlyInfected": '.$severeimpactcurrentlyInfected.',
-                "infectionsByRequestedTime": '.$severeimpactinfectionsByRequestedTime.',
-                "severeCasesByRequestedTime": '.$SsevereCasesByRequestedTime.',
-                "hospitalBedsByRequestedTime": '.$ShospitalBedsByRequestedTime.',
-                "casesForICUByRequestedTime": '.$ScasesForICUByRequestedTime.',
-                "casesForVentilatorsByRequestedTime": '.$ScasesForVentilatorsByRequestedTime.',
-                "dollarsInFlight": '.$SdollarsInFlight.'
-            }
-        }';
-
-
-    echo $out_data;
+            "severeImpact":{
+                    "currentlyInfected": '.$severeimpactcurrentlyInfected.',
+                    "infectionsByRequestedTime": '.$severeimpactinfectionsByRequestedTime.',
+                    "severeCasesByRequestedTime": '.$SsevereCasesByRequestedTime.',
+                    "hospitalBedsByRequestedTime": '.$ShospitalBedsByRequestedTime.',
+                    "casesForICUByRequestedTime": '.$ScasesForICUByRequestedTime.',
+                    "casesForVentilatorsByRequestedTime": '.$ScasesForVentilatorsByRequestedTime.',
+                    "dollarsInFlight": '.$SdollarsInFlight.'
+                }
+            }';
+    
+    $newdata = json_decode($out_data,true);
+    $newdata['data'] =$data;
+    
+    $newdata = json_encode($newdata);
+    echo $newdata;
 }
