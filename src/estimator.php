@@ -70,7 +70,7 @@ function covid19ImpactEstimator($data)
     
     $newdata = json_decode($out_data,true);
     $newdata['data'] =$data;
-    $newdata = "";
-    $newdata .= json_encode($newdata);
+//     $newdata = "";
+    $newdata = '.json_encode($newdata).';
     return $newdata;
 }
