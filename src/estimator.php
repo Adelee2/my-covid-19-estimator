@@ -1,7 +1,9 @@
 <?php
 
-function covid19ImpactEstimator($data)
+function covid19ImpactEstimator($datas)
 {
+  $data = json_encode($datas);
+  
   if($data->periodType =="days") {
         $infection_time = (int)($data->timeToElapse / 2);
     }
