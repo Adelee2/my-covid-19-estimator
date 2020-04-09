@@ -49,34 +49,34 @@ function covid19ImpactEstimator($data)
     $out_data = '{
         "data": {
                 "region": {
-                    "name": $data["name"],
-                    "avgAge": $data["avgAge"],
-                    "avgDailyIncomeInUSD": $data["avgDailyIncomeInUSD"],
-                    "avgDailyIncomePopulation": $data["avgDailyIncomePopulation"]
+                    "name": '.$data["name"].',
+                    "avgAge": '.$data["avgAge"].',
+                    "avgDailyIncomeInUSD": '.$data["avgDailyIncomeInUSD"].',
+                    "avgDailyIncomePopulation": '.$data["avgDailyIncomePopulation"].'
                 },
-                "periodType": $data["periodType"],
-                "timeToElapse": $data["timeToElapse"],
-                "reportedCases": $data["reportedCases"],
-                "population": $data["population"],
-                "totalHospitalBeds": $data["totalHospitalBeds"]
+                "periodType": '.$data["periodType"].',
+                "timeToElapse": '.$data["timeToElapse"].',
+                "reportedCases": '.$data["reportedCases"].',
+                "population": '.$data["population"].',
+                "totalHospitalBeds": '.$data["totalHospitalBeds"].'
             },
         "impact": {
-                "currentlyInfected": $impactcurrentlyInfected,
-                "infectionsByRequestedTime": $impactinfectionsByRequestedTime,
-                "severeCasesByRequestedTime": $IsevereCasesByRequestedTime,
-                "hospitalBedsByRequestedTime": $IhospitalBedsByRequestedTime,
-                "casesForICUByRequestedTime": $IcasesForICUByRequestedTime,
-                "casesForVentilatorsByRequestedTime": $IcasesForVentilatorsByRequestedTime,
-                "dollarsInFlight": $IdollarsInFlight
+                "currentlyInfected": '.$impactcurrentlyInfected.',
+                "infectionsByRequestedTime": '.$impactinfectionsByRequestedTime.',
+                "severeCasesByRequestedTime": '.$IsevereCasesByRequestedTime.',
+                "hospitalBedsByRequestedTime": '.$IhospitalBedsByRequestedTime.',
+                "casesForICUByRequestedTime": '.$IcasesForICUByRequestedTime.',
+                "casesForVentilatorsByRequestedTime": '.$IcasesForVentilatorsByRequestedTime.',
+                "dollarsInFlight": '.$IdollarsInFlight.'
             },
         "severeImpact":{
-                "currentlyInfected": $severeimpactcurrentlyInfected,
-                "infectionsByRequestedTime": $severeimpactinfectionsByRequestedTime,
-                "severeCasesByRequestedTime": $SsevereCasesByRequestedTime,
-                "hospitalBedsByRequestedTime": $ShospitalBedsByRequestedTime,
-                "casesForICUByRequestedTime": $ScasesForICUByRequestedTime,
-                "casesForVentilatorsByRequestedTime": $ScasesForVentilatorsByRequestedTime,
-                "dollarsInFlight": $SdollarsInFlight
+                "currentlyInfected": '.$severeimpactcurrentlyInfected.',
+                "infectionsByRequestedTime": '.$severeimpactinfectionsByRequestedTime.',
+                "severeCasesByRequestedTime": '.$SsevereCasesByRequestedTime.',
+                "hospitalBedsByRequestedTime": '.$ShospitalBedsByRequestedTime.',
+                "casesForICUByRequestedTime": '.$ScasesForICUByRequestedTime.',
+                "casesForVentilatorsByRequestedTime": '.$ScasesForVentilatorsByRequestedTime.',
+                "dollarsInFlight": '.$SdollarsInFlight.'
             }
         }';
 
