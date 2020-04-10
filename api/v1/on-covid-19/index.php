@@ -35,7 +35,7 @@ $httpstatus = $_SERVER['REDIRECT_STATUS'];
 
 $json = $httprequest."\t\t".$httpuri."\t\t".$httpstatus."\t\t".$httptime." ms\n";
 
-$fp = fopen($_SERVER['SERVER_NAME']."/api/v1/on-covid-19/logs/data.txt",'a+');
+$fp = fopen("/api/v1/on-covid-19/logs/data.txt",'a+');
 
 fwrite($fp,$json);
 
