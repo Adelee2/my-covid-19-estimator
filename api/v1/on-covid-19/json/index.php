@@ -16,6 +16,6 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 $postData = trim(file_get_contents('php://input'));
 
 $data = json_decode($postData,true);
-$output = json_encode(covid19ImpactEstimator($data));
-print_r($output);
+$output = json_encode(covid19ImpactEstimator($data),JSON_PRETTY_PRINT);
+echo $output;
 ?>
