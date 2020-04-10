@@ -4,13 +4,13 @@ function covid19ImpactEstimator($data)
 
 //    $data = json_encode($datas, JSON_FORCE_OBJECT);
     if($data["periodType"] =="days") {
-        $infection_time = (int)($data["timeToElapse"] / 2);
+        $infection_time = (int)($data["timeToElapse"] / 3);
     }
     elseif ($data["periodType"] =="weeks"){
-       $infection_time =  (int)(($data["timeToElapse"] * 7)/2);
+       $infection_time =  (int)(($data["timeToElapse"] * 7)/3);
     }
     elseif ($data["periodType"] =="months"){
-        $infection_time =  (int)(($data["timeToElapse"] * 30)/2);
+        $infection_time =  (int)(($data["timeToElapse"] * 30)/3);
     }
     else{
         $infection_time = 0;
