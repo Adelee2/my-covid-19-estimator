@@ -14,7 +14,6 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 //This raw data should contain XML.
 $postData = trim(file_get_contents('php://input'));
 
-$data = json_encode($postData);
-$output = covid19ImpactEstimator($data);
-echo $output;
+$data = json_decode($postData,true);
+covid19ImpactEstimator($data);
 ?>
