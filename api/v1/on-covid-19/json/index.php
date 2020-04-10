@@ -3,6 +3,7 @@
 //use GuzzleHttp\Client;
 include('../../../../src/estimator.php');
 ini_set("allow_url_fopen", true);
+$filename = $_SERVER['SERVER_NAME']."/api/v1/on-covid-19/logs/datas.txt";
 
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
@@ -30,17 +31,20 @@ $postData= '{
 $httptime  = $_SERVER['REQUEST_TIME'];
 $httprequest = $_SERVER['REQUEST_METHOD'];
 $httpuri = $_SERVER['REQUEST_URI'];
-$httpstatus = $_SERVER['REDIRECT_STATUS'];
 
-$json = $httprequest."\t\t".$httpuri."\t\t".$httpstatus."\t\t".$httptime." ms\n";
+$fp = fopen($filename,"a+");
 
-$fp = fopen($_SERVER['SERVER_NAME']."/api/v1/on-covid-19/logs/data.txt",'a+');
+$json ="";
+$json = $httprequest."\t\t".$httpuri."\t\t200\t\t".$httptime." ms".PHP_EOL;
 
-fwrite($fp,$json);
+if($fp){
+    fwrite($fp,$json);
+}
+else{
+    echo "error: "." can't create in ".$_SERVER['SERVER_NAME']."/api/v1/on-covid-19/logs/datas.txt"."\n";
+}
+
 
 fclose($fp);
-
-$data = json_decode($postData,true);
-$output = json_encode(covid19ImpactEstimator($data),JSON_PRETTY_PRINT);
 echo $output;
 ?>
