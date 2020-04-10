@@ -60,7 +60,7 @@ function covid19ImpactEstimator($data)
                     "hospitalBedsByRequestedTime": '.(int)$IhospitalBedsByRequestedTime.',
                     "casesForICUByRequestedTime": '.(int)$IcasesForICUByRequestedTime.',
                     "casesForVentilatorsByRequestedTime": '.(int)$IcasesForVentilatorsByRequestedTime.',
-                    "dollarsInFlight": '.round($IdollarsInFlight,2).'
+                    "dollarsInFlight": '.(int)$IdollarsInFlight.'
                 },
             "severeImpact":{
                     "currentlyInfected": '.$severeimpactcurrentlyInfected.',
@@ -69,7 +69,7 @@ function covid19ImpactEstimator($data)
                     "hospitalBedsByRequestedTime": '.(int)$ShospitalBedsByRequestedTime.',
                     "casesForICUByRequestedTime": '.(int)$ScasesForICUByRequestedTime.',
                     "casesForVentilatorsByRequestedTime": '.(int)$ScasesForVentilatorsByRequestedTime.',
-                    "dollarsInFlight": '. round($SdollarsInFlight,2).'
+                    "dollarsInFlight": '. (int)$SdollarsInFlight.'
                 }
             }';
     
