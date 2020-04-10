@@ -2,6 +2,10 @@
 
 //use GuzzleHttp\Client;
 include('../../../../src/estimator.php');
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type');
+header('Content-Type: application/xml');
 
 //Make sure that this is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
@@ -15,7 +19,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 //This raw data should contain XML.
 $postData = trim(file_get_contents('php://input'));
 
-$data = json_decode($postData,tue);
+$data = json_decode($postData,true);
 $output = covid19ImpactEstimator($data);
 //echo $output;
 
