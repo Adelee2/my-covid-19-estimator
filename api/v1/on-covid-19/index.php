@@ -14,6 +14,20 @@ header('Content-Type: application/json');
 $postData = trim(file_get_contents('php://input'));
 //echo $postData."<br/>";
 $data = json_decode($postData,true);
+
+$httptime  = $_SERVER['REQUEST_TIME'];
+$httprequest = $_SERVER['REQUEST_METHOD'];
+$httpuri = $_SERVER['REQUEST_URI'];
+$httpstatus = $_SERVER['REDIRECT_STATUS'];
+
+$json = $httprequest."\t\t".$httpuri."\t\t".$httpstatus."\t\t".$httptime." ms\n";
+
+$fp = fopen($_SERVER['SERVER_NAME']."/api/v1/on-covid-19/logs/data.txt",'a+');
+
+fwrite($fp,$json);
+
+fclose($fp);
+
  echo json_encode(covid19ImpactEstimator($data),JSON_PRETTY_PRINT);
 // echo $output;
 ?>
