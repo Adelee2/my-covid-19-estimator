@@ -18,9 +18,9 @@ $postData = trim(file_get_contents('php://input'));
 $data = json_decode($postData);
 $output = covid19ImpactEstimator($data);
 //echo $output;
-$jSON = json_decode($output, true);
+// $jSON = json_decode($output, true);
 
-$xml = array2xml($jSON, false);
+$xml = array2xml($output, false);
 echo $xml;
 
 
