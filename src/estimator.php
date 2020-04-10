@@ -52,18 +52,18 @@ function covid19ImpactEstimator($data)
                     "currentlyInfected": '.$impactcurrentlyInfected.',
                     "infectionsByRequestedTime": '.$impactinfectionsByRequestedTime.',
                     "severeCasesByRequestedTime": '.$IsevereCasesByRequestedTime.',
-                    "hospitalBedsByRequestedTime": '.$IhospitalBedsByRequestedTime.',
-                    "casesForICUByRequestedTime": '.$IcasesForICUByRequestedTime.',
-                    "casesForVentilatorsByRequestedTime": '.$IcasesForVentilatorsByRequestedTime.',
+                    "hospitalBedsByRequestedTime": '.(int)$IhospitalBedsByRequestedTime.',
+                    "casesForICUByRequestedTime": '.(int)$IcasesForICUByRequestedTime.',
+                    "casesForVentilatorsByRequestedTime": '.(int)$IcasesForVentilatorsByRequestedTime.',
                     "dollarsInFlight": '.$IdollarsInFlight.'
                 },
             "severeImpact":{
                     "currentlyInfected": '.$severeimpactcurrentlyInfected.',
                     "infectionsByRequestedTime": '.$severeimpactinfectionsByRequestedTime.',
                     "severeCasesByRequestedTime": '.$SsevereCasesByRequestedTime.',
-                    "hospitalBedsByRequestedTime": '.$ShospitalBedsByRequestedTime.',
-                    "casesForICUByRequestedTime": '.$ScasesForICUByRequestedTime.',
-                    "casesForVentilatorsByRequestedTime": '.$ScasesForVentilatorsByRequestedTime.',
+                    "hospitalBedsByRequestedTime": '.(int)$ShospitalBedsByRequestedTime.',
+                    "casesForICUByRequestedTime": '.(int)$ScasesForICUByRequestedTime.',
+                    "casesForVentilatorsByRequestedTime": '.(int)$ScasesForVentilatorsByRequestedTime.',
                     "dollarsInFlight": '.$SdollarsInFlight.'
                 }
             }';
