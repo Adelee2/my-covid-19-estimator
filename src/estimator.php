@@ -31,16 +31,16 @@ function covid19ImpactEstimator($data)
     $ScasesForVentilatorsByRequestedTime= 0.02 * $severeimpactinfectionsByRequestedTime;
 
     if($data["periodType"] =="days") {
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
     }
     elseif ($data["periodType"] =="weeks"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 7;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] *7;
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 7;
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] *7;
     }
     elseif ($data["periodType"] =="months"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
     }
     else{
         $IdollarsInFlight = 0;
@@ -71,6 +71,6 @@ function covid19ImpactEstimator($data)
    $newdata = json_decode($out_data,true);
     $newdata['data'] =$data;
 
-//     $newdata = json_encode($newdata, JSON_PRETTY_PRINT);
+    $newdata = json_encode($newdata, JSON_PRETTY_PRINT);
     return $newdata;
 }
