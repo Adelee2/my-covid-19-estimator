@@ -9,13 +9,14 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     exit;
 }
 
-
+echo "Welcome<br/>";
 //Get the raw POST data from PHP's input stream.
 //This raw data should contain XML.
 $postData = trim(file_get_contents('php://input'));
 
-$data = json_decode($postData,true);
- echo json_encode(covid19ImpactEstimator($data));
+print_r($postData);
+//$data = json_decode($postData,true);
+// print_r(json_encode(covid19ImpactEstimator($data)));
 // echo $output;
 ?>
 
