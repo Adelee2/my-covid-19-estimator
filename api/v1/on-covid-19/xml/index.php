@@ -16,7 +16,7 @@ $output = covid19ImpactEstimator($data);
 //echo $output;
 
 $xml = array2xml($output, false);
-var_dump ($xml);
+echo $xml;
 
 
 function array2xml($array, $xml = false){
