@@ -5,15 +5,20 @@ function covid19ImpactEstimator($data)
 //    $data = json_encode($datas, JSON_FORCE_OBJECT);
     if($data["periodType"] =="days") {
         $infection_time = (int)($data["timeToElapse"] / 3);
+        $time = $data["timeToElapse"];
+
     }
     elseif ($data["periodType"] =="weeks"){
        $infection_time =  (int)(($data["timeToElapse"] * 7)/3);
+       $time = $data["timeToElapse"] * 7;
     }
     elseif ($data["periodType"] =="months"){
         $infection_time =  (int)(($data["timeToElapse"] * 30)/3);
+        $time = $data["timeToElapse"] * 30;
     }
     else{
         $infection_time = 0;
+        $time = 0;
     }
     $impactcurrentlyInfected= $data["reportedCases"] * 10;
     $impactinfectionsByRequestedTime= $impactcurrentlyInfected * pow(2, $infection_time);
@@ -31,16 +36,16 @@ function covid19ImpactEstimator($data)
     $ScasesForVentilatorsByRequestedTime= 0.02 * $severeimpactinfectionsByRequestedTime;
 
     if($data["periodType"] =="days") {
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"];
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"];
+        $IdollarsInFlight = ($impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
+        $SdollarsInFlight = ($severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
     }
     elseif ($data["periodType"] =="weeks"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 7;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"] *7;
+        $IdollarsInFlight = ($impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
+        $SdollarsInFlight = ($severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
     }
     elseif ($data["periodType"] =="months"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
+        $IdollarsInFlight = ($impactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
+        $SdollarsInFlight = ($severeimpactinfectionsByRequestedTime * $data["region"]["avgDailyIncomePopulation"] * $data["region"]["avgDailyIncomeInUSD"]) / $time;
     }
     else{
         $IdollarsInFlight = 0;
