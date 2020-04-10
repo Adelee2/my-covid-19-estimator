@@ -13,6 +13,19 @@ header('Content-Type: application/json');
 //This raw data should contain XML.
 $postData = trim(file_get_contents('php://input'));
 //echo $postData."<br/>";
+$postData= '{
+        "region": {
+            "name": "Africa",
+            "avgAge": 19.7,
+            "avgDailyIncomeInUSD": 5,
+            "avgDailyIncomePopulation": 0.71
+        },
+        "periodType": "days",
+        "timeToElapse": 58,
+        "reportedCases": 674,
+        "population": 66622705,
+        "totalHospitalBeds": 1380614
+}';
 $data = json_decode($postData,true);
 
 $httptime  = $_SERVER['REQUEST_TIME'];
