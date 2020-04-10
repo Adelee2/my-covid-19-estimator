@@ -68,9 +68,9 @@ function covid19ImpactEstimator($data)
                 }
             }';
     
-    $newdata = json_decode($out_data,true);
+   $newdata = json_decode($out_data,true);
     $newdata['data'] =$data;
-//     $newdata = "";
-    $newdata = '.json_encode($newdata,JSON_FORCE_OBJECT).';
+
+    $newdata = json_encode($newdata, JSON_PRETTY_PRINT);
     return $newdata;
 }
