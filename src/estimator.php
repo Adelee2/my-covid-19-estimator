@@ -31,16 +31,16 @@ function covid19ImpactEstimator($data)
     $ScasesForVentilatorsByRequestedTime= 0.02 * $severeimpactinfectionsByRequestedTime;
 
     if($data["periodType"] =="days") {
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"];
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"];
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"];
     }
     elseif ($data["periodType"] =="weeks"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"] * 7;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"] *7;
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 7;
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] *7;
     }
     elseif ($data["periodType"] =="months"){
-        $IdollarsInFlight = $impactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"] * 30;
-        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * 0.65 * 1.5 * $data["timeToElapse"] * 30;
+        $IdollarsInFlight = $impactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
+        $SdollarsInFlight = $severeimpactinfectionsByRequestedTime * $data["avgDailyIncomePopulation"] * $data["avgDailyIncomeInUSD"] * $data["timeToElapse"] * 30;
     }
     else{
         $IdollarsInFlight = 0;
