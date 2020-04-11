@@ -14,20 +14,9 @@ header('Content-Type: application/json');
 //Get the raw POST data from PHP's input stream.
 //This raw data should contain XML.
 $postData = trim(file_get_contents('php://input'));
-$postData= '{
-        "region": {
-            "name": "Africa",
-            "avgAge": 19.7,
-            "avgDailyIncomeInUSD": 5,
-            "avgDailyIncomePopulation": 0.71
-        },
-        "periodType": "days",
-        "timeToElapse": 58,
-        "reportedCases": 674,
-        "population": 66622705,
-        "totalHospitalBeds": 1380614
-}';
+$data = json_decode($postData,true);
 
+echo json_encode(covid19ImpactEstimator($data),JSON_PRETTY_PRINT);
 $httptime  = $_SERVER['REQUEST_TIME'];
 $httprequest = $_SERVER['REQUEST_METHOD'];
 $httpuri = $_SERVER['REQUEST_URI'];
@@ -46,5 +35,5 @@ else{
 
 
 fclose($fp);
-echo $output;
+
 ?>

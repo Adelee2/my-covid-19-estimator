@@ -23,7 +23,6 @@ $httptime  = $_SERVER['REQUEST_TIME'];
 $httprequest = $_SERVER['REQUEST_METHOD'];
 $httpuri = $_SERVER['REQUEST_URI'];
 
-chmod($file, 0777);
 $fp = fopen($filename,"a+");
 
 $json ="";
