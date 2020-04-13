@@ -26,7 +26,7 @@ $httpuri = $_SERVER['REQUEST_URI'];
 $fp = fopen($filename,"a+");
 
 $json ="";
-$json = $httprequest."\t\t".$httpuri."\t\t200\t\t".$httptime." ms".PHP_EOL;
+$json = $httprequest."\t\t".$httpuri."\t\t200\t\t".$httptime."ms".PHP_EOL;
 
 if($fp){
     fwrite($fp,$json);
