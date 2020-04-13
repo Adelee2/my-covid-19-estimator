@@ -13,13 +13,16 @@ header('Content-Type: application/json');
 
 //Get the raw POST data from PHP's input stream.
 //This raw data should contain XML.
+usleep(mt_rand(100, 10000));
+
 $postData = trim(file_get_contents('php://input'));
 //echo $postData."<br/>";
 $data = json_decode($postData,true);
 
  echo json_encode(covid19ImpactEstimator($data),JSON_PRETTY_PRINT);
 
-$httptime  = $_SERVER['REQUEST_TIME'];
+// At the end of your script
+$httptime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
 $httprequest = $_SERVER['REQUEST_METHOD'];
 $httpuri = $_SERVER['REQUEST_URI'];
 
